@@ -29,52 +29,23 @@ public class UserController extends BaseController {
     @Resource
     private UserService userService;
 
-    @RequestMapping("login")
-    @ResponseBody
-    public ResultInfo userLogin (String username,String password){
-        ResultInfo resultInfo = new ResultInfo();
-        // 通过 try catch 捕获 Service 层抛出的异常
-//        try {
-            // 调用Service层的登录方法，得到返回的用户对象
-            UserModel userModel = userService.userLogin(username, password);
-            /**
-             * 登录成功后，有两种处理：
-             * 1. 将用户的登录信息存入 Session （ 问题：重启服务器，Session 失效，客户端
-             需要重复登录 ）
-             * 2. 将用户信息返回给客户端，由客户端（Cookie）保存
-             */
-            // 将返回的UserModel对象设置到 ResultInfo 对象中
-            resultInfo.setResult(userModel);
-//        }catch (ParamsException e){
-//            e.printStackTrace();
-//            resultInfo.setMsg(e.getMsg());
-//            resultInfo.setCode(e.getCode());
-//        }catch (Exception e){
-//            e.printStackTrace();
-//            resultInfo.setMsg("操作失败");
-//            resultInfo.setCode(500);
-//        }
-        return resultInfo;
-    }
+//    @RequestMapping("login")
+//    @ResponseBody
+//    public ResultInfo userLogin (){
+//            ResultInfo resultInfo = new ResultInfo();
+//           UserModel userModel = userService.userLogin(username, password);
+//           resultInfo.setResult(userModel);
+//            return resultInfo;
+//    }
 
     @RequestMapping("updatePassword")
     @ResponseBody
     public ResultInfo updateUserPassword(HttpServletRequest request,String oldPassword, String newPassword, String confirmPassword){
-        ResultInfo resultInfo = new ResultInfo();
-//        try {
-            // 获取userId
+            ResultInfo resultInfo = new ResultInfo();
             Integer userId = LoginUserUtil.releaseUserIdFromCookie(request);
             //调用service方法
             userService.updateUserPassword(userId,oldPassword,newPassword,confirmPassword);
-//        }catch (ParamsException pe){
-//            pe.printStackTrace();
-//            resultInfo.setCode(pe.getCode());
-//            resultInfo.setMsg(pe.getMsg());
-//        }catch (Exception e){
-//            e.printStackTrace();
-//            resultInfo.setMsg("操作失败");
-//            resultInfo.setCode(500);
-//        }
+
         return resultInfo;
     }
 

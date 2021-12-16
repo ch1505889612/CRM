@@ -75,6 +75,6 @@
         </div>
     </div>
 </form>
-<script type="text/javascript" src="${ctx}/js/module/update.js"></script>
+<script type="text/javascript" src="js/module/update.js"></script>
 </body>
 </html>

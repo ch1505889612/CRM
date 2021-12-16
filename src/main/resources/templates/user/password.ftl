@@ -42,7 +42,7 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="${ctx}/js/user/password.js"></script>
+<script type="text/javascript" src="js/user/password.js"></script>
 
 </body>
 </html>

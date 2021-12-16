@@ -46,6 +46,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="${ctx}/js/user/setting.js"></script>
+<script type="text/javascript" src="js/user/setting.js"></script>
 </body>
 </html>

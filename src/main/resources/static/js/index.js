@@ -23,7 +23,7 @@ layui.use(['form','jquery','jquery_cookie'], function () {
        //发送ajax请求
        $.ajax({
            type:"post",
-           url:ctx+"/user/login",
+           url:"/login",
            data:{
                username:fieldData.username,
                password:fieldData.password
@@ -46,7 +46,7 @@ layui.use(['form','jquery','jquery_cookie'], function () {
                            $.cookie("trueName", result.trueName,{expires:7});
                        }
                        // 登录成功后，跳转到首页
-                       window.location.href = ctx + "/main";
+                       window.location.href ="/main";
                    });
                }else {
                    //提示信息

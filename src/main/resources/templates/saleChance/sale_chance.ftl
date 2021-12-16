@@ -51,6 +51,6 @@
         <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
     </script>
 </form>
-<script type="text/javascript" src="${ctx}/js/saleChance/sale.chance.js"></script>
+<script type="text/javascript" src="js/saleChance/sale.chance.js"></script>
 </body>
 </html>

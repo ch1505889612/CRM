@@ -19,7 +19,7 @@ layui.use(['form','jquery','jquery_cookie'], function () {
                   confirmPassword:datas.confirmPassword
               },
               dataType:"json",
-              url:ctx+"/user/updatePassword",
+              url:+"/user/updatePassword",
               success:function (data) {
                   if (data.code==200){
                       // 修改成功后，用户自动退出系统
@@ -32,7 +32,7 @@ layui.use(['form','jquery','jquery_cookie'], function () {
                           $.removeCookie("trueName",
                               {domain:"localhost",path:"/crm"});
                           // 跳转到登录页面 (父窗口跳转)
-                          window.parent.location.href = ctx + "/index";
+                          window.parent.location.href =  + "/index";
                       })
                   }else {
                       layer.msg(data.msg);

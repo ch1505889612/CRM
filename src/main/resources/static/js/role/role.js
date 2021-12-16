@@ -5,7 +5,7 @@ layui.use(['table','layer'],function(){
 //角色列表展示
     var tableIns = table.render({
         elem: '#roleList',
-        url : ctx+'/role/list',
+        url : +'/role/list',
         cellMinWidth : 95,
         page : true,
         height : "full-125",
@@ -52,7 +52,7 @@ layui.use(['table','layer'],function(){
 
 // 打开添加页面
     function openAddOrUpdateRoleDialog(uid){
-        var url = ctx+"/role/addOrUpdateRolePage";
+        var url = +"/role/addOrUpdateRolePage";
         var title="角色管理-角色添加";
         if(uid){
             url = url+"?id="+uid;
@@ -77,7 +77,7 @@ layui.use(['table','layer'],function(){
         }else if(layEvent === "del") {
             layer.confirm('确定删除当前角色？', {icon: 3, title: "角色管理"}, function
                 (index) {
-                $.post(ctx+"/role/delete",{id:obj.data.id},function (data) {
+                $.post(+"/role/delete",{id:obj.data.id},function (data) {
                     if(data.code==200){
                         layer.msg("操作成功！");
                         tableIns.reload();
@@ -99,7 +99,7 @@ layui.use(['table','layer'],function(){
             layer.msg("暂不支持批量角色授权!", {icon: 5});
             return;
         }
-        var url = ctx+"/role/toAddGrantPage?roleId="+datas[0].id;
+        var url = +"/role/toAddGrantPage?roleId="+datas[0].id;
         var title="角色管理-角色授权";
         layui.layer.open({
             title : title,

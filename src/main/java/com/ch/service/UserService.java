@@ -3,9 +3,11 @@ package com.ch.service;
 
 import com.ch.base.BaseService;
 import com.ch.base.ResultInfo;
+import com.ch.bean.Permission;
 import com.ch.bean.User;
 import com.ch.bean.UserModel;
 import com.ch.bean.UserRole;
+import com.ch.mapper.PermissionMapper;
 import com.ch.mapper.UserMapper;
 import com.ch.mapper.UserRoleMapper;
 import com.ch.query.SaleChanceQuery;
@@ -13,8 +15,15 @@ import com.ch.query.UserQuery;
 import com.ch.utils.*;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import freemarker.template.utility.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,13 +33,16 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 @Service
-public class UserService extends BaseService<User,Integer> {
+public class UserService extends BaseService<User,Integer> implements UserDetailsService{
 
     @Resource
     private UserMapper userMapper;
 
     @Resource
     private UserRoleMapper userRoleMapper;
+
+    @Resource
+    private PermissionMapper permissionMapper;
 
     /**
      * 登录验证
@@ -287,4 +299,29 @@ public class UserService extends BaseService<User,Integer> {
         AssertUtil.isTrue(!PhoneUtil.isMobile(phone),"手机号码格式不正确！");
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+        User user = userMapper.selectQueryUsername(username);
+        System.out.println(user+"--------------");
+        if (username==null||user==null){
+           throw new UsernameNotFoundException("用户不存在");
+        }
+            List<String> permissions = permissionMapper.queryUserHasRolesHasPermissions(user.getId());
+            List<GrantedAuthority> grantedAuthorities=new ArrayList<>();
+            for (String p:permissions) {
+                GrantedAuthority grantedAuthority=new SimpleGrantedAuthority(p);
+                grantedAuthorities.add(grantedAuthority);
+            }
+            System.out.println(grantedAuthorities);
+            User users = new User();
+            users.setIsValid(user.getIsValid());
+            users.setUserName(username);
+            users.setUserPwd(user.getPassword());
+            users.setAuthorities(grantedAuthorities);
+            System.out.println(users);
+            return users;
+
+
+    }
 }

@@ -46,6 +46,6 @@
         <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
     </script>
 </form>
-<script type="text/javascript" src="${ctx}/js/user/user.js"></script>
+<script type="text/javascript" src="js/user/user.js"></script>
 </body>
 </html>

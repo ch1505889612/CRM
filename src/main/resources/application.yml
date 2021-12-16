@@ -1,8 +1,6 @@
 ## 端口号  上下文路径
 server:
   port: 8089
-  servlet:
-    context-path: /crm
 
 ## 数据源配置
 spring:

@@ -54,6 +54,6 @@
         </div>
     </div>
 </form>
-<script type="text/javascript" src="${ctx}/js/user/add_update.js"></script>
+<script type="text/javascript" src="js/user/add_update.js"></script>
 </body>
 </html>

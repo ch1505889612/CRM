@@ -1,7 +1,7 @@
 package com.ch.controller;
 
 
-import com.ch.annotations.RequirePermission;
+;
 import com.ch.base.BaseController;
 import com.ch.base.ResultInfo;
 import com.ch.bean.Role;
@@ -45,7 +45,6 @@ public class RoleController extends BaseController {
 
      @RequestMapping("list")
      @ResponseBody
-     @RequirePermission(code = "602002")
      public Map<String,Object> queryAllRoleInfo(RoleQuery roleQuery){
          return roleService.queryAllRoleInfo(roleQuery);
      }

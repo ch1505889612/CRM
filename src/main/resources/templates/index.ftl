@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>后台管理-登录</title>
     <#include "common.ftl">
-    <link rel="stylesheet" href="${ctx}/css/index.css" media="all">
+    <link rel="stylesheet" href="css/index.css" media="all">
 </head>
 <body>
 <div class="layui-container">
@@ -16,11 +16,11 @@
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-icon layui-icon-username" for="username"></label>
-                    <input type="text" name="username" lay-verify="required|account" placeholder="用户名或者邮箱" autocomplete="off" class="layui-input" >
+                    <input type="text" name="username" value="admin" lay-verify="required|account" placeholder="用户名或者邮箱" autocomplete="off" class="layui-input" >
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-icon layui-icon-password" for="password"></label>
-                    <input type="password" name="password" lay-verify="required|password" placeholder="密码" autocomplete="off" class="layui-input" >
+                    <input type="password" name="password" value="123456" lay-verify="required|password" placeholder="密码" autocomplete="off" class="layui-input" >
                 </div>
                 <#-- 记住我 -->
                 <div class="layui-form-item">
@@ -33,7 +33,7 @@
         </div>
     </div>
 </div>
-<script src="${ctx}/js/index.js" charset="utf-8">
+<script src="js/index.js" charset="utf-8">
 
 </script>
 </body>

@@ -80,6 +80,6 @@
     </div>
 </form>
 <script type="text/javascript"
-        src="${ctx}/js/saleChance/add_update.js"></script>
+        src="js/saleChance/add_update.js"></script>
 </body>
 </html>

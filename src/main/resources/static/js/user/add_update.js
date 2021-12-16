@@ -14,9 +14,9 @@ layui.use(['form', 'layer','formSelects'], function () {
 // 弹出loading层
         var index = top.layer.msg('数据提交中，请稍候', {icon: 16, time: false,
             shade: 0.8});
-        var url = ctx + "/user/add";
+        var url =  + "/user/add";
         if($("input[name='id']").val()){
-            url = ctx + "/user/update";
+            url =  + "/user/update";
         }
         $.post(url, data.field, function (res) {
             if (res.code == 200) {
@@ -54,7 +54,7 @@ layui.use(['form', 'layer','formSelects'], function () {
     var userId = $("input[name='id']").val();
     formSelects.config('selectId',{
         type:"post",
-        searchUrl:ctx+"/role/queryAllRoles?userId="+userId,
+        searchUrl:+"/role/queryAllRoles?userId="+userId,
         keyName: 'roleName', //自定义返回数据中name的key, 默认 name
         keyVal: 'id' //自定义返回数据中value的key, 默认 value
     },true);

@@ -32,6 +32,6 @@
         </div>
     </div>
 </form>
-<script type="text/javascript" src="${ctx}/js/role/add_update.js"></script>
+<script type="text/javascript" src="js/role/add_update.js"></script>
 </body>
 </html>

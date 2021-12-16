@@ -8,7 +8,7 @@ layui.use(['table', 'treetable'], function () {
         treeIdName: 'id',
         treePidName: 'parentId',
         elem: '#munu-table',
-        url: ctx+'/module/list',
+        url: +'/module/list',
         toolbar: "#toolbarDemo",
         treeDefaultClose:true,
         page: true,
@@ -59,7 +59,7 @@ layui.use(['table', 'treetable'], function () {
         } else if (layEvent === 'del') {
             layer.confirm('确定删除当前菜单？', {icon: 3, title: "菜单管理"}, function
                 (index) {
-                $.post(ctx+"/module/delete",{id:data.id},function (data) {
+                $.post(+"/module/delete",{id:data.id},function (data) {
                     if(data.code==200){
                         layer.msg("操作成功！");
                         window.location.reload();
@@ -87,7 +87,7 @@ layui.use(['table', 'treetable'], function () {
     // 打开添加菜单对话框
     function openAddModuleDialog(grade,parentId){
         var grade=grade;
-        var url = ctx+"/module/addModulePage?grade="+grade+"&parentId="+parentId;
+        var url = +"/module/addModulePage?grade="+grade+"&parentId="+parentId;
         var title="菜单添加";
         layui.layer.open({
             title : title,
@@ -98,7 +98,7 @@ layui.use(['table', 'treetable'], function () {
         });
     }
     function openUpdateModuleDialog(id){
-        var url = ctx+"/module/updateModulePage?id="+id;
+        var url = +"/module/updateModulePage?id="+id;
         var title="菜单更新";
         layui.layer.open({
             title : title,

@@ -7,7 +7,7 @@ layui.use(['table','layer','jquery'],function(){
      */
     var tableIns = table.render({
         elem: '#saleChanceList', // 表格绑定的ID
-        url : ctx + '/sale_chance/list', // 访问数据的地址
+        url :  + '/sale_chance/list', // 访问数据的地址
         cellMinWidth : 95,
         page : true, // 开启分页
         height : "full-125",
@@ -94,10 +94,10 @@ layui.use(['table','layer','jquery'],function(){
 
     function openAddOrUpdateSaleChanceDialog(id) {
         var title = "<h2>营销机会管理添加</h2>";
-        var url = ctx + "/sale_chance/addOrUpdateSaleChancePage";
+        var url =  + "/sale_chance/addOrUpdateSaleChancePage";
         if (id!=null){
              title = "<h2>营销机会管理修改</h2>";
-             url = ctx + "/sale_chance/addOrUpdateSaleChancePage?id="+id;
+             url =  + "/sale_chance/addOrUpdateSaleChancePage?id="+id;
         }
         layui.layer.open({
             title:title,
@@ -127,7 +127,7 @@ layui.use(['table','layer','jquery'],function(){
                     layer.close(index);
                     $.ajax({
                         type: "post",
-                        url: ctx + "/sale_chance/delete",
+                        url:  + "/sale_chance/delete",
                         data: {"ids": data.id}, // 参数传递的是数组
                         dataType: "json",
                         success: function (result) {
@@ -166,7 +166,7 @@ layui.use(['table','layer','jquery'],function(){
             }
             $.ajax({
                 type: "post",
-                url: ctx + "/sale_chance/delete",
+                url:  + "/sale_chance/delete",
                 data: {"ids":ids.toString()}, // 参数传递的是数组
                 dataType: "json",
                 success: function (result) {

@@ -1,7 +1,7 @@
 package com.ch.controller;
 
 
-import com.ch.annotations.RequirePermission;
+
 import com.ch.base.BaseController;
 import com.ch.base.ResultInfo;
 import com.ch.bean.SaleChance;
@@ -39,7 +39,6 @@ public class SaleChangeController extends BaseController {
      */
     @RequestMapping("list")
     @ResponseBody
-    @RequirePermission(code = "101001")
     public Map<String, Object> querySaleChanceByParams (SaleChanceQuery query) {
         return saleChanceService.querySelectByParams(query);
     }

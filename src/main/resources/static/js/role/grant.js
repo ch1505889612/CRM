@@ -5,7 +5,7 @@ $(function () {
 function loadModuleInfo() {
     $.ajax({
         type:"post",
-        url:ctx+"/module/queryAllModules",
+        url:+"/module/queryAllModules",
         data:{
             roleId:$("#roleId").val()
         },
@@ -50,7 +50,7 @@ function zTreeOnCheck(event, treeId, treeNode) {
     }
     $.ajax({
         type:"post",
-        url:ctx+"/role/addGrant",
+        url:+"/role/addGrant",
         data:mids+"&roleId="+roleId,
         dataType:"json",
         success:function (data) {

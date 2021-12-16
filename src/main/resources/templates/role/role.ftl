@@ -38,6 +38,6 @@ searchVal" placeholder="角色名" />
         <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
     </script>
 </form>
-<script type="text/javascript" src="${ctx}/js/role/role.js"></script>
+<script type="text/javascript" src="js/role/role.js"></script>
 </body>
 </html>

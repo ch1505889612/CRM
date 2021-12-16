@@ -2,13 +2,17 @@ package com.ch.controller;
 
 
 import com.ch.base.BaseController;
+import com.ch.base.ResultInfo;
 import com.ch.bean.User;
 import com.ch.service.PermissionService;
 import com.ch.service.UserService;
+import com.ch.utils.CookieUtil;
 import com.ch.utils.LoginUserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -42,13 +46,9 @@ public class IndexController extends BaseController {
      */
     @RequestMapping("main")
     public String main(HttpServletRequest request){
-        Integer userId = LoginUserUtil.releaseUserIdFromCookie(request);
-        // 调用对应Service层的方法，通过userId主键查询用户对象
-         User user = userService.selectByPrimaryKey(userId);
-        // 将用户对象设置到request作用域中
+        int userId = LoginUserUtil.releaseUserIdFromCookie(request);
+        User user = userService.selectByPrimaryKey(userId);
         request.setAttribute("user", user);
-        List<String> permissions = permissionService.queryUserHasRolesHasPermissions(userId);
-        request.getSession().setAttribute("permissions",permissions);
         return "main";
     }
 

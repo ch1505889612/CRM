@@ -1,8 +1,14 @@
 package com.ch.bean;
 
-import java.util.Date;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.ui.Model;
 
-public class User {
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+
+public class User implements UserDetails {
     private Integer id;
 
     private String userName;
@@ -22,6 +28,11 @@ public class User {
     private Date updateDate;
 
     private String roleIds;
+
+
+    private Collection<? extends GrantedAuthority> authorities;
+
+
 
     public String getRoleIds() {
         return roleIds;
@@ -116,5 +127,45 @@ public class User {
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
                 '}';
+    }
+
+
+    public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
+        this.authorities = authorities;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
+
+    @Override
+    public String getPassword() {
+        return userPwd;
+    }
+
+    @Override
+    public String getUsername() {
+        return userName;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return this.isValid==1?true:false;
     }
 }

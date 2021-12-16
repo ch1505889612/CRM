@@ -31,7 +31,7 @@
         </a>
     </div>
 </script>
-<script type="text/javascript" src="${ctx}/js/module/module.js">
+<script type="text/javascript" src="js/module/module.js">
 </script>
 </body>
 </html>

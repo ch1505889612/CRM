@@ -16,9 +16,9 @@ layui.use(['form','jquery','jquery_cookie'], function () {
                shade:0.8 // 设置遮罩的透明度
            });
            // 请求的地址
-           var url = ctx + "/sale_chance/save";
+           var url =  + "/sale_chance/save";
            if ($("input[name=id]").val()){
-               url = ctx + "/sale_chance/update";
+               url =  + "/sale_chance/update";
            }
            alert(JSON.stringify(data.field))
            // 发送ajax请求
@@ -45,7 +45,7 @@ layui.use(['form','jquery','jquery_cookie'], function () {
     /**
      * 加载下拉框
      */
-    $.post(ctx + "/user/queryAllSales",function (data) {
+    $.post( + "/user/queryAllSales",function (data) {
         console.log(JSON.stringify(data))
         // 如果是修改操作，判断当前修改记录的指派人的值
         var assignMan = $("input[name='man']").val();

@@ -7,7 +7,7 @@ layui.use(['table','layer','jquery'],function(){
      */
     var tableIns = table.render({
         elem: '#userList',
-        url : ctx+'/user/list',
+        url : +'/user/list',
         cellMinWidth : 95,
         page : true,
         height : "full-125",
@@ -84,10 +84,10 @@ layui.use(['table','layer','jquery'],function(){
 
 
     function openAddUpdate(id) {
-         var url=ctx+"/user/addUpdateUser";
+         var url=+"/user/addUpdateUser";
          var title="<h2>用户模块--增加</h2>"
          if (id!=null){
-             url=ctx+"/user/addUpdateUser?id="+id
+             url=+"/user/addUpdateUser?id="+id
              title="<h2>用户模块--修改</h2>"
          }
         layui.layer.open({
@@ -119,7 +119,7 @@ layui.use(['table','layer','jquery'],function(){
             }
             $.ajax({
                 type: "post",
-                url: ctx + "/user/delete",
+                url:  + "/user/delete",
                 data: {"ids":ids.toString()}, // 参数传递的是数组
                 dataType: "json",
                 success: function (result) {
@@ -158,7 +158,7 @@ layui.use(['table','layer','jquery'],function(){
                     layer.close(index);
                     $.ajax({
                         type: "post",
-                        url: ctx + "/user/delete",
+                        url:  + "/user/delete",
                         data: {"ids": data.id}, // 参数传递的是数组
                         dataType: "json",
                         success: function (result) {
